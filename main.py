@@ -2,8 +2,10 @@ import gradio as gr
 import torch
 from torch import nn
 import os
+import torchvision
 from torchvision.utils import save_image
 LATENT_SIZE=50
+
 
 # задаем класс модели
 class Generator(nn.Module):
@@ -54,7 +56,7 @@ def generate(number, c):
     tensors = gen(noise, target)
     save_image(tensors, '1.jpg', normalize=True)
     return '1.jpg'
-    
+
 # инициализация модели: архитектура + веса
 def init_model():
     global gen
